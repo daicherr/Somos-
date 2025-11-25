@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 import ExploreScreen from '../screens/ExploreScreen'; 
-import NotificationsScreen from '../screens/NotificationsScreen'; // Mantemos a importação se quiser usar no sino da Home
+import NotificationsScreen from '../screens/NotificationsScreen'; 
 import ProfileScreen from '../screens/ProfileScreen';
 import ChatDetailScreen from '../screens/ChatDetailScreen'; 
 import UserProfileScreen from '../screens/UserProfileScreen';
@@ -142,4 +142,5 @@ export default function MainAppNavigator() {
             </Tab.Navigator>
         </View>
     );
+
 }
