@@ -14,7 +14,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import ChatDetailScreen from '../screens/ChatDetailScreen'; 
 import UserProfileScreen from '../screens/UserProfileScreen';
 import CreatePostScreen from '../screens/CreatePostScreen';
-import CampaignsScreen from '../screens/CampaignsScreen'; // NOVA IMPORTAÇÃO
+import CampaignsScreen from '../screens/CampaignsScreen'; 
 
 const Tab = createBottomTabNavigator();
 
@@ -144,3 +144,4 @@ export default function MainAppNavigator() {
     );
 
 }
+
