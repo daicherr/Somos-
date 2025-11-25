@@ -9,11 +9,12 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 import ExploreScreen from '../screens/ExploreScreen'; 
-import NotificationsScreen from '../screens/NotificationsScreen';
+import NotificationsScreen from '../screens/NotificationsScreen'; // Mantemos a importação se quiser usar no sino da Home
 import ProfileScreen from '../screens/ProfileScreen';
 import ChatDetailScreen from '../screens/ChatDetailScreen'; 
 import UserProfileScreen from '../screens/UserProfileScreen';
-import CreatePostScreen from '../screens/CreatePostScreen'; 
+import CreatePostScreen from '../screens/CreatePostScreen';
+import CampaignsScreen from '../screens/CampaignsScreen'; // NOVA IMPORTAÇÃO
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +29,7 @@ const getTabBarVisibility = (route) => {
     return 'flex';
 };
 
-// 1. Home Stack
+// 1. Home Stack (A Home já tem o sino que leva para NotificationsScreen)
 const HomeStack = createNativeStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
@@ -36,6 +37,7 @@ const HomeStackScreen = () => (
         <HomeStack.Screen name="ExploreMain" component={ExploreScreen} />
         <HomeStack.Screen name="UserProfile" component={UserProfileScreen} />
         <HomeStack.Screen name="ChatDetail" component={ChatDetailScreen} />
+        <HomeStack.Screen name="NotificationsTab" component={NotificationsScreen} /> 
     </HomeStack.Navigator>
 );
 
@@ -49,14 +51,12 @@ const MessageStackScreen = () => (
     </MessageStack.Navigator>
 );
 
-// 3. Notification Stack (NOVO: Corrige o botão de voltar)
-const NotificationStack = createNativeStackNavigator();
-const NotificationStackScreen = () => (
-    <NotificationStack.Navigator screenOptions={{ headerShown: false }}>
-        <NotificationStack.Screen name="NotificationsList" component={NotificationsScreen} />
-        <NotificationStack.Screen name="UserProfile" component={UserProfileScreen} />
-        {/* Se quiser abrir o post direto futuramente, adicione PostDetail aqui */}
-    </NotificationStack.Navigator>
+// 3. NOVO: Campaign Stack (Para navegação interna se precisar)
+const CampaignStack = createNativeStackNavigator();
+const CampaignStackScreen = () => (
+    <CampaignStack.Navigator screenOptions={{ headerShown: false }}>
+        <CampaignStack.Screen name="CampaignsList" component={CampaignsScreen} />
+    </CampaignStack.Navigator>
 );
 
 const EmptyComponent = () => null;
@@ -122,11 +122,12 @@ export default function MainAppNavigator() {
                     }}
                 />
 
-                {/* 4. NOTIFICAÇÕES (Agora usa a Stack!) */}
+                {/* ABA 4: CAMPANHAS (No lugar do coração) */}
                 <Tab.Screen 
-                    name="NotificationsTab" 
-                    component={NotificationStackScreen} 
+                    name="CampaignsTab" 
+                    component={CampaignStackScreen} 
                     options={{
+                        // Ícone de coração com mão (solidariedade) ou coração normal
                         tabBarIcon: ({ focused, color }) => <Ionicons name={focused ? 'heart' : 'heart-outline'} size={28} color={color} />
                     }}
                 />
